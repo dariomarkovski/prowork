@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="container container-form">
+  <div class="login-message">Create your account</div>
+  <form [formGroup]="registerForm">
+    <div class="form-group row">
+      <!--<label class="col-sm-2 col-form-label" for="inputUsername">Username:</label>-->
+      <div class="col-sm-12">
+        <input id="inputUsername" class="form-control" formControlName="username" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-group row">
+      <!--<label class="col-sm-2 col-form-label" for="inputPassword">Password:</label>-->
+      <div class="col-sm-12">
+        <input type="password" id="inputPassword" class="form-control" formControlName="password"
+               placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <!--<label class="col-sm-2 col-form-label" for="inputPassword">Password:</label>-->
+      <div class="col-sm-12">
+        <input type="password" id="inputConfirmPassword" class="form-control" formControlName="confirmPassword"
+               placeholder="Confirm Password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <!--<label class="col-sm-2 col-form-label" for="inputEmail">Email:</label>-->
+      <div class="col-sm-12">
+        <input id="inputEmail" class="form-control" formControlName="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="flex-center">
+      <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="onSubmit()">Register</button>
+      <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+    </div>
+    <div *ngIf="!registerForm.get('confirmPassword').untouched && matchingPasswordsError && !errorDisplay"
+         class="login-message error-msg">
+      Passwords don't match
+    </div>
+    <div *ngIf="errorDisplay" class="login-message error-msg">
+      {{errorMessage}}
+    </div>
+  </form>
+</div>

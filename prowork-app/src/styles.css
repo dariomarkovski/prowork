@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #e9ebee;
+  font-family: Raleway, SansSerif;
+}
+
+.body-color {
+  background-color: #283e4a;
+}
+
+.full-width {
+  width: 100%;
+  margin: 0;
+}
+
+.header-style {
+  margin: 20px auto;
+  padding: 10px;
+  color: white;
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.gradient-style {
+  height: 10px;
+  background: linear-gradient(to bottom, #283e4a, #e9ebee);
+}
+
+.btn {
+  margin: 2px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.container-form {
+  margin: 60px auto 30px;
+  width: 400px;
+  padding: 50px;
+  background-color: #e9ebee;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px;
+}
+
+.login-message {
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.error-msg {
+  color: #cc0000;
+}

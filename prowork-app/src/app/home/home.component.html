@@ -1,0 +1,123 @@
+<app-logged-header></app-logged-header>
+<!--<a [routerLink]="['/new-issue']"> New Issue </a>-->
+<br>
+<div class="container">
+
+  <div class="btn-group" role="group">
+
+    <button class="btn btn-secondary" (click)="changeUserField('all')">All Tasks</button>
+    <button class="btn btn-secondary" (click)="changeUserField('assigned')">Assigned To Me</button>
+    <button class="btn btn-secondary" (click)="changeUserField('created')">Created By Me</button>
+    <button class="btn btn-secondary" (click)="changeUserField('review')">Reviewed By Me</button>
+
+  </div>
+  <div class="task-div">
+
+    <div id="task-main" class="task-main">
+
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary special" (click)="changeStatus('all')">ALL</button>
+        <button type="button" class="btn btn-secondary special" (click)="changeStatus('none')">NONE</button>
+        <button type="button" class="btn btn-secondary special" (click)="changeStatus('working')">WORKING</button>
+        <button type="button" class="btn btn-secondary special" (click)="changeStatus('done')">DONE</button>
+      </div>
+
+      <div *ngIf="issues !== undefined" class="task-list">
+
+        <div *ngFor="let issue of issues" class="task-list-item" (click)="selectIssue(issue)">
+          {{issue.name}}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="task-detail" *ngIf="selectedIssue !== undefined">
+
+      <div class="action-div">
+
+        <!-- Example single danger button -->
+        <div class="btn-group action-div-item">
+          <button type="button" class="btn special btn-secondary dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+            Status
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item clickable" (click)="changeIssueStatus(0)">NONE</a>
+            <a class="dropdown-item clickable" (click)="changeIssueStatus(1)">WORKING</a>
+            <a class="dropdown-item clickable" (click)="changeIssueStatus(2)">DONE</a>
+          </div>
+        </div>
+
+        <div class="btn-group action-div-item">
+          <button type="button" class="btn special btn-secondary dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+            Assign to other
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item clickable" *ngFor="let user of allUsers"
+               (click)="changeIssueAssignee(user.username)">{{user.username}}</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="task-detail-item">Name: {{selectedIssue.name}}</div>
+        <div class="task-detail-item detail-status-info">
+          <div>Status: {{selectedIssue.status}}</div>
+          <div>Type: {{selectedIssue.type}}</div>
+        </div>
+        <!--<div class="task-detail-item">Type:</div>-->
+        <div class="task-detail-item">Created By: {{selectedIssue.createdBy.username}}</div>
+        <div class="task-detail-item">Reviewed By: {{selectedIssue.reviewedBy.username}}</div>
+        <div class="task-detail-item">Assigned To: {{selectedIssue.assignedTo.username}}</div>
+        <div class="task-detail-item">Date Created: {{selectedIssue.dateCreated | date:'dd.MM.yyyy'}}</div>
+        <div class="task-detail-item">Date Due:
+          <span *ngIf="selectedIssue.dateDue !== null">{{selectedIssue.dateDue | date:'dd.MM.yyyy'}}</span>
+          <span *ngIf="selectedIssue.dateDue === null">NONE</span>
+        </div>
+        <div class="task-detail-item detail-description">Description: {{selectedIssue.description}}</div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="activity-div" *ngIf="selectedIssue !== undefined && selectedIssueComments !== undefined">
+    <div class="comment-div">
+      <div class="no-comments" *ngIf="selectedIssueComments.length === 0">No Comments</div>
+      <div class="comments-section" *ngIf="selectedIssueComments.length > 0">
+        <div class="comments-section-item" *ngFor="let comment of selectedIssueComments">
+
+          <div class="comment-desc">
+            <div class="comment-desc-user">
+              {{comment.commentedBy.username}} commented:
+            </div>
+            <div class="comment-desc-delete">
+              <button class="btn btn-danger" *ngIf="username === comment.commentedBy.username"
+                      (click)="deleteComment(comment.commentId)">DELETE
+              </button>
+            </div>
+          </div>
+
+          <div>
+            {{comment.commentText}}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Add New Comment" aria-label="Recipient's username"
+             aria-describedby="basic-addon2" [(ngModel)]="comment">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary confirm" type="button" (click)="addComment()"
+                [disabled]="comment === ''">Confirm
+        </button>
+        <button class="btn btn-outline-secondary discard" type="button" (click)="discardComment()">Discard</button>
+      </div>
+    </div>
+  </div>
+</div>

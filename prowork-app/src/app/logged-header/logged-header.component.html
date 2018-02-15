@@ -1,0 +1,12 @@
+<div class="container-header">
+  <div class="container-header-left">
+    <div>ProWork</div>
+    <a class="nav-anchor" [routerLink]="['/new-issue']"><img src="../../assets/newIssue.png" width="20px" height="20px"><span>New Issue</span></a>
+  </div>
+  <div class="container-header-right">
+    <a class="container-header-anchor">{{loggedUsername}}</a>
+    <a class="container-header-anchor" (click)="logout()">Log Out</a>
+  </div>
+</div>
+<div class="full-width gradient-style">
+</div>

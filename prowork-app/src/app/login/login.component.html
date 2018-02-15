@@ -1,0 +1,31 @@
+<div class="red">
+<app-header></app-header>
+  <div class="container container-form">
+    <div class="login-message">Log in to your account</div>
+    <form [formGroup]="loginForm">
+      <div class="form-group row">
+        <!--<label class="col-sm-3 col-form-label" for="inputUsername">Username:</label>-->
+        <div class="col-sm-12">
+          <input id="inputUsername" class="form-control" formControlName="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group row">
+        <!--<label class="col-sm-3 col-form-label" for="inputPassword">Password:</label>-->
+        <div class="col-sm-12">
+          <input type="password" id="inputPassword" class="form-control" formControlName="password"
+                 placeholder="Password">
+        </div>
+      </div>
+      <div *ngIf="errorDisplay" class="login-message error-msg">
+        {{errorMessage}}
+      </div>
+      <div class="flex-center">
+        <button class="btn btn-primary" (click)="onSubmit()">Log In</button>
+        <button class="btn btn-primary" (click)="goToRegister()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="flex-center">
+  <a class="help-login" (click)="navigateToLoginHelp()">Can't log in?</a>
+</div>

@@ -1,0 +1,17 @@
+<div class="red">
+  <app-header></app-header>
+  <div class="container container-form">
+    <div class="login-message">Enter Your Registered Email Address</div>
+    <form [formGroup]="emailAddressForm">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input id="emailAddress" class="form-control" formControlName="emailAddress" placeholder="Email Address">
+        </div>
+      </div>
+    </form>
+    <div class="flex-center">
+      <button class="btn btn-primary" (click)="sendEmail()">Send Email</button>
+      <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>

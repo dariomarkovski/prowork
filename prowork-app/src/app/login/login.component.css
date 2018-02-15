@@ -1,0 +1,21 @@
+.help-login {
+  color: white !important;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.help-login:hover {
+  color: #dddddd;
+}
+
+.btn {
+  background-color: #283e4a;
+  border-color: #283e4a;
+}
+
+.btn:hover:not(:disabled), .btn:active, .btn:focus {
+  background-color: #e9ebee !important;
+  border-color: #283e4a !important;
+  color: #283e4a !important;
+  box-shadow: none !important;
+}

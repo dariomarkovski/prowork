@@ -1,0 +1,64 @@
+<app-logged-header></app-logged-header>
+<div class="container container-form" *ngIf="usersReady === true">
+  <form [formGroup]="issueForm">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Name:</label>
+      <div class="col-sm-9">
+        <input class="form-control" formControlName="name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Type:</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="type">
+          <option value="TASK">Task</option>
+          <option value="STORY">Story</option>
+          <option value="BUG">Bug</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Reviewed By:</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="reviewedBy">
+          <option value="No one selected">No one selected</option>
+          <option *ngFor="let user of users" value="{{user.username}}">
+            {{user.username}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Assigned To:</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="assignedTo">
+          <option value="No one selected">No one selected</option>
+          <option *ngFor="let user of users" value="{{user.username}}">
+            {{user.username}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Description:</label>
+      <div class="col-sm-9">
+        <textarea maxlength="1000" rows="10" class="form-control" formControlName="description">
+        </textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Due Date:</label>
+      <div class="col-sm-4">
+        <input type="date" formControlName="dueDate">
+      </div>
+      <div>
+        <input type="checkbox" formControlName="dueDateSelected" #dueDateSelected
+               (change)="changeDueDateInputEnabled(dueDateSelected.checked)">
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-dark" (click)="onSubmit()">Submit Issue</button>
+      <button class="btn btn-danger" (click)="discard()">Discard Issue</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,97 @@
+$gold-color:rgb(219, 164, 82);
+$blue-color:rgb(210, 225, 250);
+$dark-blue-color:rgb(152, 174, 211);
+
+.gold-background-color {
+    background-color: $gold-color;
+}
+
+.blue-background-color {
+    background-color: $blue-color;
+}
+
+.link-no-decor {
+    color: white;
+    text-decoration: none;
+}
+
+.link-no-decor:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.logout-link {
+    color: white !important;
+}
+
+.logout-link:hover {
+    color: lightgray !important;
+    cursor: pointer;
+}
+
+.filter-buttons button {
+    color: $gold-color;
+    border-radius: 0;
+}
+
+.filter-buttons button:hover {
+    color: $gold-color;
+}
+
+.filter-buttons-upper button:first-child {
+    border-top-left-radius: .25rem;
+}
+
+.filter-buttons-upper button:last-child {
+    border-top-right-radius: .25rem;
+}
+
+// .filter-buttons-bottom button:first-child {
+//     border-bottom-left-radius: .25rem;
+// }
+
+// .filter-buttons-bottom button:last-child {
+//     border-bottom-right-radius: .25rem;
+// }
+
+.status-button {
+    color: $gold-color !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.status-button:hover {
+    color: $gold-color !important;
+}
+
+.assign-button {
+    color: $gold-color !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.assign-button:hover {
+    color: $gold-color !important;
+}
+
+.confirm:hover {
+    background-color: green !important;
+}
+
+.discard:hover {
+    background-color: red !important;
+}
+
+.task-list-item {
+    border: 1px solid white;
+    border-top: none;
+}
+
+.task-list-item:nth-child(2){
+    background-color: $dark-blue-color !important;
+}
+
+.task-list-item:hover{
+    background-color: rgb(131, 131, 131) !important;
+    cursor: pointer;
+}

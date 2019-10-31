@@ -20,7 +20,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sequelize-typescript": "^0.6.7",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3"
